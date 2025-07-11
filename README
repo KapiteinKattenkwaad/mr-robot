@@ -1,0 +1,45 @@
+# Robot Challenge CLI
+
+A CLI app to control a robot on a grid.
+
+## Prerequisites
+- Node.js (v18 or newer recommended)
+- npm (comes with Node.js)
+
+## Setup
+
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+2. Run the CLI:
+   ```sh
+   npm run dev
+   ```
+3. Run the tests:
+   ```sh
+   npm run test
+   ```
+
+## Usage
+
+You will see a prompt:
+
+```
+Welcome to the Robot walk!
+ Please choose one of the follow commands:
+ PLACE X Y F
+ MOVE
+ LEFT or RIGHT
+ REPORT
+```
+
+Type commands such as:
+- `PLACE 0,0,NORTH`
+- `MOVE`
+- `LEFT`
+- `RIGHT`
+- `REPORT`
+
+Type `exit` to quit.
