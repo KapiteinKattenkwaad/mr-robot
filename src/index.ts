@@ -30,7 +30,7 @@ rl.prompt();
 
 rl.on('line', (line) => {
   const input = line.trim().toUpperCase();
-
+//TODO: fix first time issue
   if (isFirstTime) {
     if (testPlace(input)) {
       isFirstTime = false

@@ -11,7 +11,7 @@ export const printGrid = (): void => {
         }
         console.log(line);
     }
-    console.log(`You are at (${position.row}, ${position.col})`);
+    console.log(`You are at (X: ${position.row}, Y: ${position.col}, Direction: ${position.direction})`);
 }
 
 export const moveLeft = (): void => {
@@ -61,16 +61,16 @@ export const moveRight = (): void => {
 const moveInDirection = () => {
     switch (position.direction) {
         case 'NORTH':
-            position = { row: position.row -1, col: position.col, direction: position.direction }
-            break;
-        case 'EAST':
             position = { row: position.row, col: position.col + 1, direction: position.direction }
             break;
-        case 'SOUTH':
+        case 'EAST':
             position = { row: position.row + 1, col: position.col, direction: position.direction }
             break;
-        case 'WEST':
+        case 'SOUTH':
             position = { row: position.row, col: position.col - 1, direction: position.direction }
+            break;
+        case 'WEST':
+            position = { row: position.row - 1, col: position.col, direction: position.direction }
             break;
         default:
             position = { row: position.row, col: position.col, direction: position.direction }    
