@@ -93,19 +93,12 @@ export const isInsideGrid = (row: number, col: number): boolean => {
 }
 
 export const findPlaceCoordinates = (text: string) => {
-    // Regex explanation:
-    // ^\s*         : Start of string, optional whitespace
-    // (\w+)        : First word 
-    // \s+          : One or more spaces
-    // (\d+),(\d+)  : Two numbers separated by a comma (coordinates)
-    // \s+          : One or more spaces
-    // (\w+)        : Last word (direction)
-    const match = text.match(/^\s*(\w+)\s+(\d+),(\d+)\s+(\w+)/);
+    const match = text.match(/^PLACE (\d+),(\d+),(NORTH|EAST|SOUTH|WEST)$/i);
 
     if (match) {
-        const row = parseInt(match[2]); // 0
-        const col = parseInt(match[3]); // 0
-        const direction = match[4];   // "north"
+        const row = parseInt(match[2]);
+        const col = parseInt(match[3]);
+        const direction = match[4];  
 
         if (isInsideGrid(row, col)) {
             position = { row, col, direction }
