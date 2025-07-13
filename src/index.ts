@@ -13,7 +13,6 @@ const rl = readline.createInterface({
 
 let isFirstTime = true
 
-
 logOutput('Welcome to the Robot walk!\n Please choose one of the follow commands:\n PLACE X,Y F\n MOVE\n LEFT or RIGHT\n REPORT \nE.g.: \n PLACE 1,2,EAST');
 rl.prompt();
 
@@ -24,8 +23,8 @@ rl.on('line', (line) => {
   if (isFirstTime && !isPlaceInputCorrect(input)) {
     isPlaceInputCorrect(input) ? isFirstTime = false : logOutput('Your first move must be of the command Place. E.g.: PLACE 1,2,EAST')
   } else if (isPlaceInputCorrect(input)) {
+    isFirstTime = false
     findPlaceCoordinates(input)
-    printGrid()
   } else if (input === 'MOVE') {
     moveUp()
   } else if (input === 'LEFT') {
