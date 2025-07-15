@@ -1,5 +1,5 @@
 import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_REGEX } from "../constants";
-import { logOutput } from "./log";
+import { cliLog } from "./cliLogger";
 import { isPlaceInputCorrect } from "../util/testPlace";
 
 export let position = { row: 4, col: 0, direction: 'NORTH' };
@@ -37,7 +37,7 @@ export const moveLeft = (): void => {
             position.direction = 'NORTH'
     }
 
-    logOutput(position.direction, 'green')
+    cliLog(position.direction, 'green')
 
 }
 
@@ -59,29 +59,10 @@ export const moveRight = (): void => {
             position.direction = 'NORTH'
     }
 
-    logOutput(position.direction, 'green')
+    cliLog(position.direction, 'green')
 }
 
-const moveInDirection = () => {
-    switch (position.direction) {
-        case 'NORTH':
-            position = { row: position.row, col: position.col + 1, direction: position.direction }
-            break;
-        case 'EAST':
-            position = { row: position.row + 1, col: position.col, direction: position.direction }
-            break;
-        case 'SOUTH':
-            position = { row: position.row, col: position.col - 1, direction: position.direction }
-            break;
-        case 'WEST':
-            position = { row: position.row - 1, col: position.col, direction: position.direction }
-            break;
-        default:
-            position = { row: position.row, col: position.col, direction: position.direction }    
-    }
-}
-
-export const moveUp = (): void => {
+export const moveForward = (): void => {
     let newRow = position.row;
     let newCol = position.col;
 
@@ -102,15 +83,15 @@ export const moveUp = (): void => {
 
     if (isInsideGrid(newRow, newCol)) {
         position = { row: newRow, col: newCol, direction: position.direction };
-        logOutput(position.direction, 'green');
+        cliLog(position.direction, 'green');
     } else {
-        logOutput(IN_GRID_ERROR, 'red');
+        cliLog(IN_GRID_ERROR, 'red');
     }
 };
 
 export const findPlaceCoordinates = (text: string) => {
     if (!isPlaceInputCorrect(text)) {
-        logOutput(PLACE_ERROR, 'red');
+        cliLog(PLACE_ERROR, 'red');
         return;
     }
 
@@ -123,10 +104,10 @@ export const findPlaceCoordinates = (text: string) => {
         if (isInsideGrid(row, col)) {
             position = { row, col, direction };
         } else {
-            logOutput(IN_GRID_ERROR, 'red');
+            cliLog(IN_GRID_ERROR, 'red');
         }
     } else {
-        logOutput(PLACE_ERROR + ' or turn mr.robot with left or right', 'red');
+        cliLog(PLACE_ERROR + ' or turn mr.robot with left or right', 'red');
     }
 }
 
