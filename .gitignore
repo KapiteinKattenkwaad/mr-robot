@@ -2,3 +2,5 @@ node_modules
 build
 .env*
 npm-debug.log*
+cypress/screenshots
+dist
