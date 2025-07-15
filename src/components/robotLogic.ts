@@ -1,6 +1,6 @@
 import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_REGEX } from "../constants";
 import { cliLog } from "./cliLogger";
-import { isPlaceInputCorrect } from "../util/testPlace";
+import { isPlaceInputCorrect } from "../util/validatePlaceInput";
 
 export let position = { row: 4, col: 0, direction: 'NORTH' };
 

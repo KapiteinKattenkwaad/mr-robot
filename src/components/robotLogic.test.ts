@@ -1,4 +1,4 @@
-import { moveForward, moveLeft, moveRight, placeOnGrid, isInsideGrid, position } from './robotLogic';
+import { moveForward, moveLeft, moveRight, placeOnGrid, isInsideGrid, position, printGrid } from './robotLogic';
 
 describe('Robot grid logic', () => {
   beforeEach(() => {
@@ -49,4 +49,23 @@ describe('Robot grid logic', () => {
     expect(isInsideGrid(-1, 0)).toBe(false);
     expect(isInsideGrid(0, -1)).toBe(false);
   });
+
+  it('ignores move that would fall off the grid', () => {
+    placeOnGrid(0, 0, 'SOUTH'); 
+    moveForward();
+    expect(position).toEqual({ row: 0, col: 0, direction: 'SOUTH' });
+  });
+
+  it('handles rapid sequence of valid and invalid commands', () => {
+    for (let i = 0; i < 1000; i++) {
+      moveForward();
+      moveLeft();
+      moveRight();
+    }
+    expect(position.row).toBeGreaterThanOrEqual(0);
+    expect(position.row).toBeLessThanOrEqual(4);
+    expect(position.col).toBeGreaterThanOrEqual(0);
+    expect(position.col).toBeLessThanOrEqual(4);
+  });
+
 });

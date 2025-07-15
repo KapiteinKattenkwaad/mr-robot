@@ -3,7 +3,7 @@ import readline from 'node:readline';
 
 import { cliLog } from './components/cliLogger';
 import { printGrid, moveForward, moveLeft, moveRight, findPlaceCoordinates } from './components/robotLogic';
-import { isPlaceInputCorrect } from './util/testPlace';
+import { isPlaceInputCorrect } from './util/validatePlaceInput';
 
 const rl = readline.createInterface({
   input: process.stdin,
