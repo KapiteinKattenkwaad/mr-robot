@@ -44,6 +44,6 @@ rl.on('line', (line) => {
 });
 
 rl.on('close', () => {
-  console.log('Goodbye!');
+  cliLog('Goodbye! 👋')
   process.exit(0);
 });

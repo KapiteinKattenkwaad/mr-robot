@@ -10,9 +10,8 @@ export const printGrid = (): void => {
         for (let c = 0; c < COLS; c++) {
             line += (r === position.row && c === position.col) ? '[X]' : '[ ]';
         }
-        console.log(line);
     }
-    console.log(`You are at (X: ${position.row}, Y: ${position.col}, Direction: ${position.direction})`);
+    cliLog(`You are at (X: ${position.row}, Y: ${position.col}, Direction: ${position.direction})`, 'blue');
 }
 
 export const isInsideGrid = (row: number, col: number): boolean => {
@@ -36,9 +35,6 @@ export const moveLeft = (): void => {
         default:
             position.direction = 'NORTH'
     }
-
-    cliLog(position.direction, 'green')
-
 }
 
 export const moveRight = (): void => {
@@ -58,8 +54,6 @@ export const moveRight = (): void => {
         default:
             position.direction = 'NORTH'
     }
-
-    cliLog(position.direction, 'green')
 }
 
 export const moveForward = (): void => {
@@ -83,7 +77,6 @@ export const moveForward = (): void => {
 
     if (isInsideGrid(newRow, newCol)) {
         position = { row: newRow, col: newCol, direction: position.direction };
-        cliLog(position.direction, 'green');
     } else {
         cliLog(IN_GRID_ERROR, 'red');
     }
