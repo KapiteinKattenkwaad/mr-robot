@@ -1,15 +1,5 @@
 import { moveForward, moveLeft, moveRight, placeOnGrid, isInsideGrid, position } from './robotLogic';
 
-//what to test
-//first time of user
-//input place is correct
-// report shows the x y and direction
-// move function moves up correctly
-// left and right function moves to the correct direction
-// place places correctly
-
-// integration test: whole simulation of input and output (use test scenarios from md)
-
 describe('Robot grid logic', () => {
   beforeEach(() => {
     // Reset position to initial 
