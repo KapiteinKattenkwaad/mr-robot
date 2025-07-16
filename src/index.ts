@@ -13,17 +13,19 @@ const rl = readline.createInterface({
 
 let isFirstTime = true
 
-cliLog('🤖 Welcome to the Robot walk! \n Please choose one of the follow commands:\n PLACE X,Y F\n MOVE\n LEFT or RIGHT\n REPORT \nE.g.: \n PLACE 1,2,EAST');
+cliLog(' 🤖 Welcome to the Robot challenge! \n Please move the robot around the table without falling off. \n First, place your robot somewhere on the table using the command: \n \n PLACE (+ the location e.g. 1,2,east)');
+// cliLog(' 🤖 Welcome to the Robot challenge! \n  \n Please move the robot around the table using the following commands:\n \n PLACE (+ the location e.g. 1,2,east)\n MOVE\n LEFT\n RIGHT\n \n Want to know where you are? Type: \n REPORT');
 rl.prompt();
 
 
-rl.on('line', (line) => {
+rl.on('line', (line) => {  
   const input = line.trim().toUpperCase();
 
   if (isFirstTime && !isPlaceInputCorrect(input)) {
-    isPlaceInputCorrect(input) ? isFirstTime = false : cliLog('Your first move must be of the command Place. E.g.: PLACE 1,2,EAST')
+    isPlaceInputCorrect(input) ? isFirstTime = false : cliLog('Your first move must be of the command Place. E.g. PLACE 1,2,EAST')
   } else if (isPlaceInputCorrect(input)) {
     isFirstTime = false
+    cliLog('Great work! Now, move your robot around the table using the commands: \n \n MOVE\n LEFT\n RIGHT\n PLACE (+ the location e.g. 1,2,east) \n \n Want to know where you are? Type: \n REPORT')
     findPlaceCoordinates(input)
   } else if (input === 'MOVE') {
     moveForward()
@@ -37,7 +39,7 @@ rl.on('line', (line) => {
     rl.close();
   } else {
     cliLog(`Unknown command: "${input}"`, 'red')
-    cliLog(`E.g.: \n PLACE 1,2,EAST \n MOVE \n LEFT`, 'green')
+    cliLog(`E.g. \n PLACE 1,2,EAST \n MOVE \n LEFT`, 'green')
   }
 
   rl.prompt();

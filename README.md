@@ -59,7 +59,7 @@ Welcome to the Robot walk!
 
 Your first command should be `Place X,Y,F`
 
-E.g.:
+E.g.
 ```
 Place 1,1,NORTH
 ```
