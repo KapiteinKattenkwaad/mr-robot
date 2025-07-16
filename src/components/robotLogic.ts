@@ -1,7 +1,8 @@
 import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_REGEX } from "../constants";
-import { position } from "../state/STATE";
 import { cliLog } from "./cliLogger";
 import { isPlaceInputCorrect } from "../util/validatePlaceInput";
+
+export const position = { row: 4, col: 0, direction: 'NORTH' };
 
 export const printGrid = (): void => {
     for (let r = 0; r < ROWS; r++) {
