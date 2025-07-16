@@ -1,6 +1,9 @@
-node_modules
-build
+node_modules/
+build/
 .env*
 npm-debug.log*
 cypress/screenshots
-dist
+dist/
+*.log
+coverage/
+.DS_Store
