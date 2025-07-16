@@ -1,9 +1,14 @@
 import { moveForward, moveLeft, moveRight, placeOnGrid, isInsideGrid, position, printGrid } from './robotLogic';
+import { cliLog } from './cliLogger';
+
+jest.mock('./cliLogger', () => ({
+  cliLog: jest.fn(),
+}));
 
 describe('Robot grid logic', () => {
   beforeEach(() => {
     // Reset position to initial 
-    placeOnGrid(4, 0, 'NORTH');
+    placeOnGrid(0, 0, 'NORTH');
   });
 
   it('should place the robot at the given coordinates and direction', () => {
@@ -11,16 +16,16 @@ describe('Robot grid logic', () => {
     expect(position).toEqual({ row: 2, col: 3, direction: 'EAST' });
   });
 
-  it('should move the robot north (col + 1)', () => {
+  it('should move the robot north ', () => {
     placeOnGrid(1, 1, 'NORTH');
     moveForward();
-    expect(position).toEqual({ row: 1, col: 2, direction: 'NORTH' });
+    expect(position).toEqual({ row: 2, col: 1, direction: 'NORTH' });
   });
 
-  it('should move the robot east (row + 1)', () => {
+  it('should move the robot east', () => {
     placeOnGrid(1, 1, 'EAST');
     moveForward();
-    expect(position).toEqual({ row: 2, col: 1, direction: 'EAST' });
+    expect(position).toEqual({ row: 1, col: 2, direction: 'EAST' });
   });
 
   it('should not move the robot outside the grid', () => {
@@ -68,4 +73,9 @@ describe('Robot grid logic', () => {
     expect(position.col).toBeLessThanOrEqual(4);
   });
 
+  it('should show the position when you type report', () => {
+    placeOnGrid(3, 2, 'WEST');
+    printGrid();
+    expect(cliLog).toHaveBeenCalledWith('You are at (X: 3, Y: 2, Direction: WEST)', 'blue');
+    });
 });

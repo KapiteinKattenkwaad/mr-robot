@@ -6,7 +6,7 @@ describe('Robot CLI E2E', () => {
   it('should process PLACE, MOVE, and REPORT', () => {
     const cliCommand = `echo "PLACE 0,0,NORTH\nMOVE\nREPORT\nEXIT\n" | npx ts-node src/index.ts`;
     cy.task('runCLI', { command: cliCommand }).then((result: any) => {
-      expect(result.stdout).to.include('You are at (X: 0, Y: 1, Direction: NORTH)');
+      expect(result.stdout).to.include('You are at (X: 1, Y: 0, Direction: NORTH)');
     });
   });
 

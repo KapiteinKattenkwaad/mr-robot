@@ -2,7 +2,7 @@ import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_RE
 import { cliLog } from "./cliLogger";
 import { isPlaceInputCorrect } from "../util/validatePlaceInput";
 
-export const position = { row: 4, col: 0, direction: 'NORTH' };
+export const position = { row: 0, col: 0, direction: 'NORTH' };
 
 export const printGrid = (): void => {
     for (let r = 0; r < ROWS; r++) {
@@ -62,16 +62,16 @@ export const moveForward = (): void => {
 
     switch (position.direction) {
         case 'NORTH':
-            newCol += 1;
-            break;
-        case 'EAST':
             newRow += 1;
             break;
+        case 'EAST':
+            newCol += 1;
+            break;
         case 'SOUTH':
-            newCol -= 1;
+            newRow -= 1;
             break;
         case 'WEST':
-            newRow -= 1;
+            newCol -= 1;
             break;
     }
 
