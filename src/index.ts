@@ -1,7 +1,7 @@
 
 import readline from 'node:readline';
 
-import { cliLog } from './components/cliLogger';
+import { cliLog } from './util/cliLogger';
 import { printGrid, moveForward, moveLeft, moveRight, findPlaceCoordinates } from './components/robotLogic';
 import { isPlaceInputCorrect } from './util/validatePlaceInput';
 

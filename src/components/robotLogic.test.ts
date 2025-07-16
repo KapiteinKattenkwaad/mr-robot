@@ -1,7 +1,7 @@
 import { moveForward, moveLeft, moveRight, placeOnGrid, isInsideGrid, position, printGrid } from './robotLogic';
-import { cliLog } from './cliLogger';
+import { cliLog } from '../util/cliLogger';
 
-jest.mock('./cliLogger', () => ({
+jest.mock('../util/cliLogger', () => ({
   cliLog: jest.fn(),
 }));
 

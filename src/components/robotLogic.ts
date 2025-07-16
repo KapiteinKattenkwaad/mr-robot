@@ -1,5 +1,5 @@
 import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_REGEX } from "../constants";
-import { cliLog } from "./cliLogger";
+import { cliLog } from "../util/cliLogger";
 import { isPlaceInputCorrect } from "../util/validatePlaceInput";
 
 export const position = { row: 0, col: 0, direction: 'NORTH' };
