@@ -1,0 +1,1 @@
+export const position = { row: 4, col: 0, direction: 'NORTH' };

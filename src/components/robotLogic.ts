@@ -1,8 +1,7 @@
 import { ROWS, COLS, Direction, PLACE_ERROR, IN_GRID_ERROR, PLACE_COORDINATES_REGEX } from "../constants";
+import { position } from "../state/STATE";
 import { cliLog } from "./cliLogger";
 import { isPlaceInputCorrect } from "../util/validatePlaceInput";
-
-export let position = { row: 4, col: 0, direction: 'NORTH' };
 
 export const printGrid = (): void => {
     for (let r = 0; r < ROWS; r++) {
@@ -21,16 +20,16 @@ export const isInsideGrid = (row: number, col: number): boolean => {
 export const moveLeft = (): void => {
     switch (position.direction) {
         case 'NORTH':
-            position = { row: position.row, col: position.col, direction: 'WEST' }
+            position.direction = 'WEST'
             break;
         case 'EAST':
-            position = { row: position.row, col: position.col, direction: 'NORTH' }
+            position.direction = 'NORTH'
             break;
         case 'SOUTH':
-            position = { row: position.row, col: position.col, direction: 'EAST' }
+            position.direction = 'EAST'
             break;
         case 'WEST':
-            position = { row: position.row, col: position.col, direction: 'SOUTH' }
+            position.direction = 'SOUTH'
             break;
         default:
             position.direction = 'NORTH'
@@ -40,16 +39,16 @@ export const moveLeft = (): void => {
 export const moveRight = (): void => {
     switch (position.direction) {
         case 'NORTH':
-            position = { row: position.row, col: position.col, direction: 'EAST' }
+            position.direction = 'EAST'
             break;
         case 'EAST':
-            position = { row: position.row, col: position.col, direction: 'SOUTH' }
+            position.direction = 'SOUTH'
             break;
         case 'SOUTH':
-            position = { row: position.row, col: position.col, direction: 'WEST' }
+            position.direction = 'WEST'
             break;
         case 'WEST':
-            position = { row: position.row, col: position.col, direction: 'NORTH' }
+            position.direction = 'NORTH'
             break;
         default:
             position.direction = 'NORTH'
@@ -76,7 +75,9 @@ export const moveForward = (): void => {
     }
 
     if (isInsideGrid(newRow, newCol)) {
-        position = { row: newRow, col: newCol, direction: position.direction };
+        position.row = newRow;
+        position.col = newCol;
+        position.direction = position.direction;
     } else {
         cliLog(IN_GRID_ERROR, 'red');
     }
@@ -90,12 +91,14 @@ export const findPlaceCoordinates = (text: string) => {
 
     const match = text.match(PLACE_COORDINATES_REGEX);
     if (match) {
-        const row = parseInt(match[1], 10);
-        const col = parseInt(match[2], 10);
-        const direction = match[3].toUpperCase();
+        const newRow = parseInt(match[1], 10);
+        const newCol = parseInt(match[2], 10);
+        const newDirection = match[3].toUpperCase();
 
-        if (isInsideGrid(row, col)) {
-            position = { row, col, direction };
+        if (isInsideGrid(newRow, newCol)) {
+            position.row = newRow;
+            position.col = newCol;
+            position.direction = newDirection;
         } else {
             cliLog(IN_GRID_ERROR, 'red');
         }
@@ -105,6 +108,8 @@ export const findPlaceCoordinates = (text: string) => {
 }
 
 export const placeOnGrid = (row: number, col: number, direction: Direction) => {
-    position = { row, col, direction }
+    position.row = row;
+    position.col = col;
+    position.direction = direction
 }
 
