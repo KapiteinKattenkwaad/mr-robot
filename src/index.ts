@@ -10,7 +10,7 @@ async function main(): Promise<void> {
     const container = setupContainer();
     
     // Get the CLI application
-    const cliApplication = container.get('cliApplication');
+    const cliApplication = container.get<any>('cliApplication');
     
     // Set up signal handlers for graceful shutdown
     setupSignalHandlers(cliApplication);

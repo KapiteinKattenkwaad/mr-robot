@@ -1,11 +1,11 @@
 {
   "name": "robot-challenge",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "dev": "npx ts-node src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/src/index.js",
     "test": "npx jest",
     "test-watch": "npx jest --watch",
     "e2e": "npx cypress run --spec cypress/e2e/cli.cy.ts"
